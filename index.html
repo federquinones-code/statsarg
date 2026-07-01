@@ -4,30 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>STATSARG · Básquet Argentino</title>
+<link rel="icon" type="image/svg+xml" href="assets/statsarg-logo.svg">
 <style>
   :root{
-    --bg:#0d1119; --panel:#151b28; --panel2:#1c2436; --line:#2a3450;
-    --txt:#eef1f8; --muted:#8996b0; --accent:#ff7a2f; --accent-b:#4f8cff;
-    --accent2:#16c79a; --chip:#212b42; --warn:#f0a53d; --gold:#ffcf5c;
+    --bg:#0a1322; --panel:#101c2f; --panel2:#16263c; --line:#233850;
+    --txt:#eef3f8; --muted:#8497ad; --accent:#2ee0c6; --accent-b:#38b6ff;
+    --accent2:#2ee0c6; --chip:#1a2b41; --warn:#f0a53d; --gold:#ffcf5c;
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:"Segoe UI",system-ui,Arial,sans-serif;
-    background:radial-gradient(1100px 560px at 82% -12%, #2a1c10 0%, transparent 58%), var(--bg);
+    background:radial-gradient(1100px 560px at 82% -12%, #123047 0%, transparent 58%), var(--bg);
     color:var(--txt);font-size:14px}
   a{color:inherit;text-decoration:none}
   ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#2c3752;border-radius:6px}
   /* Header / marca */
   header{padding:0 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:20px;
     flex-wrap:wrap;background:linear-gradient(180deg,#101826,#0d1119);min-height:64px}
-  .brand{display:flex;align-items:center;gap:12px}
-  .brand .mark{font-size:23px;font-weight:800;letter-spacing:2px;
-    background:linear-gradient(92deg,var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .brand .ball{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff9a52,var(--accent));
-    position:relative;box-shadow:0 2px 8px #ff7a2f55}
-  .brand .ball::before,.brand .ball::after{content:"";position:absolute;background:#0d1119aa}
-  .brand .ball::before{left:11px;top:1px;width:1.5px;height:24px}
-  .brand .ball::after{left:1px;top:11px;width:24px;height:1.5px}
-  .brand .tag{color:var(--muted);font-size:11px;letter-spacing:1px;text-transform:uppercase;border-left:1px solid var(--line);padding-left:12px}
+  .brand{display:flex;align-items:center;gap:13px}
+  .brand .logo-badge{height:46px;width:46px;border-radius:50%;box-shadow:0 3px 12px #0006,0 0 0 1px #2ee0c633}
+  .brand .tag{color:var(--muted);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;border-left:1px solid var(--line);padding-left:13px}
   header .leagues{display:flex;gap:14px;align-items:center;margin-left:6px}
   header .leagues img{height:26px;opacity:.85;filter:saturate(1.1)}
   header .spacer{flex:1}
@@ -140,8 +135,7 @@
 <body>
 <header>
   <div class="brand">
-    <span class="ball"></span>
-    <span class="mark">STATSARG</span>
+    <img class="logo-badge" src="assets/statsarg-logo.svg" alt="STATSARG">
     <span class="tag">Básquet Argentino</span>
   </div>
   <div class="leagues" id="hLeagues"></div>
