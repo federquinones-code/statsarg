@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>STATSARG · Asistidores Liga Federal</title>
+<style>
+@font-face{font-family:'Archivo Black';src:url('fonts/archivo-black.ttf');font-weight:900}
+@font-face{font-family:'Barlow Condensed';src:url('fonts/barlow-condensed-bold.ttf');font-weight:700}
+@font-face{font-family:'Barlow Condensed';src:url('fonts/barlow-condensed-semibold.ttf');font-weight:600}
+@font-face{font-family:'Barlow Semi';src:url('fonts/barlow-semibold.ttf');font-weight:600}
+@font-face{font-family:'Barlow Semi';src:url('fonts/barlow-medium.ttf');font-weight:500}
+
+:root{
+  --bone:#f5f1e8;
+  --bone2:#efe9db;
+  --navy:#16283c;
+  --navy-soft:#4a5b70;
+  --cyan:#3ac9b4;
+  --teal-ink:#12836f;
+  --orange:#cf7a52;
+  --orange-soft:#e7c3ad;
+  --card:#fffdf9;
+  --line:#e7dfcd;
+  --hair:#e6ddca;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#555;font-family:'Barlow Semi',sans-serif;color:var(--navy)}
+
+.slide{
+  width:1080px;height:1350px;position:relative;overflow:hidden;
+  background:var(--bone);
+  margin:24px auto;
+}
+.court{position:absolute;inset:0;z-index:0}
+.grain{position:absolute;inset:0;z-index:0;opacity:.32;
+  background:
+    radial-gradient(1200px 620px at 84% -12%, rgba(58,201,180,.09), transparent 60%),
+    radial-gradient(1000px 720px at -12% 112%, rgba(207,122,82,.06), transparent 55%);
+}
+.content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:56px 64px}
+
+/* ---------- shared ---------- */
+.topbar{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:18px}
+.brand img.logo{width:96px;height:96px}
+.brand .word{font-family:'Archivo Black';font-size:34px;letter-spacing:1px}
+.brand .word span{color:var(--teal-ink)}
+.liga-chip{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);
+  border-radius:999px;padding:9px 26px 9px 12px;box-shadow:0 3px 10px rgba(22,40,60,.06)}
+.liga-chip img{width:58px;height:58px;object-fit:contain}
+.liga-chip .t{font-family:'Barlow Condensed';font-weight:700;font-size:29px;letter-spacing:2px;text-transform:uppercase}
+
+.kicker{font-family:'Barlow Condensed';font-weight:700;letter-spacing:6px;text-transform:uppercase;
+  color:var(--orange);font-size:30px}
+.desc{font-size:29px;line-height:1.34;color:var(--navy-soft);font-weight:500}
+.desc b{color:var(--navy);font-weight:600}
+
+/* ---------- footer (rediseñado) ---------- */
+.footer{margin-top:auto;display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--hair);padding-top:20px}
+.footer .fbrand{display:flex;align-items:center;gap:11px}
+.footer .fbrand img{width:34px;height:34px;opacity:.92}
+.footer .fbrand .fw{font-family:'Archivo Black';font-size:22px;letter-spacing:.5px;color:var(--navy)}
+.footer .fbrand .fw span{color:var(--teal-ink)}
+.dots{display:flex;align-items:center;gap:8px}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--hair);display:block;transition:none}
+.dots i.on{background:var(--orange);width:28px;border-radius:5px}
+.fnote{font-family:'Barlow Condensed';font-weight:600;font-size:24px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--navy-soft)}
+.fnote b{color:var(--orange);font-family:'Barlow Condensed'}
+
+/* ---------- cover ---------- */
+.cover .title-block{margin-top:34px}
+.cover h1{font-family:'Archivo Black';font-size:86px;line-height:.98;text-transform:uppercase;letter-spacing:-1px}
+.cover h1 .hl{color:var(--teal-ink)}
+.cover .subtitle{margin-top:24px;display:inline-flex;align-items:center;gap:20px}
+.cover .subtitle .bar{width:86px;height:11px;background:var(--orange);border-radius:6px}
+.cover .subtitle .txt{font-family:'Barlow Condensed';font-weight:700;font-size:44px;letter-spacing:4px;
+  text-transform:uppercase;color:var(--navy)}
+.podio{margin-top:60px;display:flex;gap:28px}
+.pcard{flex:1;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:20px 18px 18px;
+  text-align:center;box-shadow:0 8px 22px rgba(22,40,60,.07);position:relative}
+.pcard.first{transform:translateY(-26px);border-color:var(--cyan);box-shadow:0 12px 28px rgba(18,131,111,.14)}
+.pcard .rank{position:absolute;top:-24px;left:50%;transform:translateX(-50%);
+  width:56px;height:56px;border-radius:50%;background:var(--navy);color:#fff;
+  font-family:'Archivo Black';font-size:28px;display:flex;align-items:center;justify-content:center;
+  border:4px solid var(--bone)}
+.pcard.first .rank{background:var(--orange)}
+.pcard .ph{width:196px;height:226px;object-fit:cover;object-position:top;border-radius:18px;margin:14px auto 0;
+  display:block;background:#e8e2d2}
+.pcard .nm{font-family:'Barlow Condensed';font-weight:700;font-size:34px;text-transform:uppercase;margin-top:14px;line-height:1}
+.pcard .tm{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:10px;
+  font-family:'Barlow Condensed';font-weight:600;font-size:26px;letter-spacing:1px;color:var(--navy-soft);text-transform:uppercase}
+.pcard .tm img{width:34px;height:34px;object-fit:contain}
+.pcard .ast{margin-top:10px;font-family:'Archivo Black';font-size:46px;color:var(--teal-ink)}
+.pcard .astlbl{font-family:'Barlow Condensed';font-weight:600;font-size:24px;letter-spacing:3px;color:var(--navy-soft)}
+
+/* ---------- player profile ---------- */
+.rankband{display:flex;align-items:center;gap:22px;margin-top:48px}
+.rankband .num{font-family:'Archivo Black';font-size:120px;color:var(--orange);line-height:.9}
+.rankband .lbl .k{font-family:'Barlow Condensed';font-weight:700;font-size:30px;letter-spacing:5px;
+  text-transform:uppercase;color:var(--teal-ink)}
+.rankband .lbl h2{font-family:'Archivo Black';font-size:66px;text-transform:uppercase;line-height:1;margin-top:6px}
+.rankband .lbl .sub{display:flex;align-items:center;gap:12px;margin-top:12px;
+  font-family:'Barlow Condensed';font-weight:600;font-size:32px;letter-spacing:1px;color:var(--navy-soft);text-transform:uppercase}
+.rankband .lbl .sub img{width:44px;height:44px;object-fit:contain}
+.rankband .lbl .sub .dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+
+.profile-main{display:flex;gap:44px;margin-top:46px;align-items:stretch;min-width:0}
+.photo-wrap{width:400px;flex:none;position:relative}
+.photo-wrap .ph{width:400px;height:476px;object-fit:cover;object-position:top;border-radius:28px;
+  border:1px solid var(--line);background:#e8e2d2;box-shadow:0 12px 28px rgba(22,40,60,.12);display:block}
+.photo-wrap .tag{position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);
+  background:var(--navy);color:#fff;border-radius:999px;padding:12px 30px;white-space:nowrap;
+  font-family:'Barlow Condensed';font-weight:700;font-size:30px;letter-spacing:3px;text-transform:uppercase}
+.photo-wrap .tag span{color:var(--cyan)}
+
+.stats-col{flex:1;min-width:0;display:flex;flex-direction:column;gap:20px}
+.hero-tile{background:var(--navy);border-radius:26px;padding:24px 34px;display:flex;align-items:center;
+  justify-content:space-between;box-shadow:0 12px 26px rgba(22,40,60,.16)}
+.hero-tile .lbl{font-family:'Barlow Condensed';font-weight:600;font-size:32px;letter-spacing:4px;
+  color:#c3d3df;text-transform:uppercase;line-height:1.15}
+.hero-tile .val{font-family:'Archivo Black';font-size:88px;color:var(--cyan);line-height:1}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 8px 14px;text-align:center}
+.tile .v{font-family:'Archivo Black';font-size:42px;line-height:1}
+.tile .k{font-family:'Barlow Condensed';font-weight:600;font-size:22px;letter-spacing:1.5px;color:var(--navy-soft);
+  text-transform:uppercase;margin-top:8px}
+.tile.hl .v{color:var(--teal-ink)}
+
+/* métricas avanzadas */
+.advpanel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 18px 14px}
+.advpanel .at{font-family:'Barlow Condensed';font-weight:700;font-size:20px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--navy-soft);margin-bottom:12px}
+.advrow{display:grid;grid-template-columns:repeat(3,1fr);row-gap:16px}
+.advrow .m{min-width:0;text-align:center;position:relative;padding:2px 4px}
+.advrow .m:not(:nth-child(3n))::after{content:'';position:absolute;right:0;top:2px;bottom:2px;width:1px;background:var(--line)}
+.advrow .m:nth-child(-n+3){padding-bottom:14px;border-bottom:1px solid var(--line)}
+.advrow .m:nth-child(n+4){padding-top:2px}
+.advrow .m .v{font-family:'Archivo Black';font-size:34px;line-height:1;letter-spacing:-.5px}
+.advrow .m .v.neg{color:#b8564f}
+.advrow .m .v.pos{color:var(--teal-ink)}
+.advrow .m .k{font-family:'Barlow Condensed';font-weight:600;font-size:20px;letter-spacing:1px;
+  color:var(--navy-soft);text-transform:uppercase;margin-top:6px}
+
+.profile .descbox{margin-top:58px;background:var(--card);border-left:8px solid var(--orange);
+  border-radius:0 18px 18px 0;padding:24px 30px;box-shadow:0 6px 16px rgba(22,40,60,.05)}
+
+/* ---------- shotmap slide ---------- */
+.shot-head{margin-top:26px}
+.shot-head .k{font-family:'Barlow Condensed';font-weight:700;font-size:30px;letter-spacing:5px;
+  text-transform:uppercase;color:var(--teal-ink)}
+.shot-head h2{font-family:'Archivo Black';font-size:44px;text-transform:uppercase;line-height:1;margin-top:6px}
+
+.shot-main{display:flex;flex-direction:column;margin-top:20px;flex:1;min-height:0;gap:20px}
+.mapcard{width:566px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;
+  box-shadow:0 12px 28px rgba(22,40,60,.10)}
+.mapcard .crop{width:566px;height:392px;overflow:hidden;position:relative}
+.mapcard img{width:566px;display:block;margin-top:-79px}
+.mapcard .cap{background:var(--navy);color:#fff;text-align:center;
+  font-family:'Barlow Condensed';font-weight:700;font-size:23px;letter-spacing:2px;text-transform:uppercase;padding:10px 6px}
+.mapcard .cap span{color:var(--cyan)}
+
+.panels-row{display:flex;gap:22px;align-items:stretch}
+.panel{flex:1;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px 22px}
+/* donut cómo termina las posesiones */
+.donut-wrap{display:flex;align-items:center;gap:18px;margin-top:14px}
+.donut{width:150px;height:150px;flex:none}
+.donut .seg{transition:none}
+.legend{flex:1;min-width:0;display:flex;flex-direction:column;gap:9px}
+.legend .li{display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed';font-weight:600;
+  font-size:22px;color:#d4e0e9;line-height:1}
+.legend .li i{width:15px;height:15px;border-radius:4px;flex:none}
+.legend .li .lbl{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.legend .li .pv{font-family:'Archivo Black';font-size:22px;color:#fff}
+.legend .li .pv small{font-family:'Barlow Condensed';font-weight:600;color:#9fb2c0;font-size:17px}
+.panel h3{font-family:'Barlow Condensed';font-weight:700;font-size:26px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--navy);display:flex;align-items:center;gap:11px}
+.panel h3::before{content:'';width:13px;height:13px;border-radius:4px;background:var(--orange)}
+.panel.dark{background:var(--navy);border-color:var(--navy)}
+.panel.dark h3{color:#fff}
+.panel.dark h3::before{background:var(--cyan)}
+
+.splitrow{display:flex;gap:9px;margin-top:14px}
+.split{flex:1;min-width:0;text-align:center;background:var(--bone2);border-radius:15px;padding:12px 2px 10px}
+.split .v{font-family:'Archivo Black';font-size:25px;letter-spacing:-.5px}
+.split .f{font-family:'Barlow Condensed';font-weight:600;font-size:20px;color:var(--navy-soft);margin-top:4px}
+.split .k{font-family:'Barlow Condensed';font-weight:700;font-size:21px;letter-spacing:1.5px;color:var(--teal-ink);margin-top:6px}
+
+.possrow{display:flex;gap:12px;margin-top:14px}
+.poss{flex:1;min-width:0;text-align:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:15px;padding:14px 6px 11px}
+.poss .v{font-family:'Archivo Black';font-size:34px;color:#fff}
+.poss .v.cy{color:var(--cyan)}
+.poss .k{font-family:'Barlow Condensed';font-weight:600;font-size:19px;letter-spacing:1px;color:#c3d3df;
+  text-transform:uppercase;margin-top:8px;line-height:1.12}
+.ratio-note{margin-top:13px;font-family:'Barlow Condensed';font-weight:600;font-size:24px;color:#c3d3df;
+  text-align:center;letter-spacing:.5px}
+.ratio-note b{color:var(--cyan);font-family:'Archivo Black';font-size:27px;letter-spacing:0}
+
+.shot .descbox{margin-top:18px;background:var(--card);border-left:8px solid var(--orange);
+  border-radius:0 18px 18px 0;padding:20px 28px;box-shadow:0 6px 16px rgba(22,40,60,.05)}
+</style>
+</head>
+<body>
+
+<!-- ======== court background svg (reused, más transparente) ======== -->
+<script>
+const COURT = `
+<svg class="court" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#f5f1e8"/>
+  <g opacity="0.32">
+    <rect width="1080" height="1350" fill="url(#wg)"/>
+  </g>
+  <defs>
+    <linearGradient id="wg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f2e7"/>
+      <stop offset="1" stop-color="#efe7d4"/>
+    </linearGradient>
+  </defs>
+  <!-- wood planks (muy tenues) -->
+  <g stroke="#efe6d1" stroke-width="2">
+    <line x1="120" y1="0" x2="120" y2="1350"/><line x1="240" y1="0" x2="240" y2="1350"/>
+    <line x1="360" y1="0" x2="360" y2="1350"/><line x1="480" y1="0" x2="480" y2="1350"/>
+    <line x1="600" y1="0" x2="600" y2="1350"/><line x1="720" y1="0" x2="720" y2="1350"/>
+    <line x1="840" y1="0" x2="840" y2="1350"/><line x1="960" y1="0" x2="960" y2="1350"/>
+  </g>
+  <!-- half-court painted lines (apagadas) -->
+  <g fill="none" stroke="#d8b48a" stroke-width="6" opacity="0.24">
+    <circle cx="540" cy="60" r="240"/>
+    <circle cx="540" cy="60" r="80" fill="rgba(207,122,82,0.05)"/>
+    <rect x="345" y="900" width="390" height="450"/>
+    <circle cx="540" cy="900" r="115"/>
+    <path d="M 75 1350 L 75 1130 Q 540 620 1005 1130 L 1005 1350"/>
+    <line x1="410" y1="1268" x2="670" y2="1268" stroke-width="8"/>
+  </g>
+  <g fill="none" stroke="#d8b48a" stroke-width="6" opacity="0.16">
+    <line x1="0" y1="60" x2="1080" y2="60"/>
+  </g>
+</svg>`;
+
+function makeDots(active){
+  let d='';
+  for(let n=0;n<7;n++) d+=`<i class="${n===active?'on':''}"></i>`;
+  return d;
+}
+function foot(active,note){
+  return `<div class="footer">
+    <div class="fbrand"><img src="../../assets/statsarg-logo.svg"><div class="fw">STATS<span>ARG.</span></div></div>
+    <div class="dots">${makeDots(active)}</div>
+    <div class="fnote">${note}</div>
+  </div>`;
+}
+
+// gráfico de torta (dona) de cómo termina las posesiones
+function donut(t){
+  const segs=[
+    {k:'Tiro de 2', v:t.fg2, c:'#12836f'},
+    {k:'Tiro de 3', v:t.fg3, c:'#cf7a52'},
+    {k:'Asistencia', v:t.ast, c:'#3ac9b4'},
+    {k:'Viaje a la línea', v:t.ftl, c:'#e0a94e'},
+    {k:'Pérdida', v:t.tov, c:'#b8564f'}
+  ];
+  const total=segs.reduce((s,x)=>s+x.v,0);
+  let off=25, ring='', leg='';
+  segs.forEach(s=>{
+    const pct=s.v/total*100;
+    ring+=`<circle class="seg" r="15.915" cx="21" cy="21" fill="none" stroke="${s.c}" stroke-width="9"
+      stroke-dasharray="${pct.toFixed(2)} ${(100-pct).toFixed(2)}" stroke-dashoffset="${off.toFixed(2)}"></circle>`;
+    off=(off-pct+100)%100;
+    leg+=`<div class="li"><i style="background:${s.c}"></i><span class="lbl">${s.k}</span>
+      <span class="pv">${Math.round(pct)}%<small> · ${s.v}</small></span></div>`;
+  });
+  return `<div class="donut-wrap">
+    <svg class="donut" viewBox="0 0 42 42">
+      <circle r="15.915" cx="21" cy="21" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="9"></circle>
+      ${ring}
+    </svg>
+    <div class="legend">${leg}</div>
+  </div>`;
+}
+</script>
+
+<!-- ================= SLIDE 1 · PORTADA ================= -->
+<div class="slide cover" id="s1">
+  <div class="court-holder"></div><div class="grain"></div>
+  <div class="content">
+    <div class="topbar">
+      <div class="brand">
+        <img class="logo" src="../../assets/statsarg-logo.svg">
+        <div class="word">STATS<span>ARG.</span></div>
+      </div>
+      <div class="liga-chip"><img src="../../assets/leagues/liga-federal.png"><div class="t">Liga Federal</div></div>
+    </div>
+
+    <div class="title-block">
+      <div class="kicker">Ranking · Líderes de la competencia</div>
+      <h1 style="margin-top:22px">Los mejores<br><span class="hl">asistidores</span><br>de la Liga Federal</h1>
+      <div class="subtitle"><div class="bar"></div><div class="txt">Los que ven el juego</div></div>
+    </div>
+
+    <div class="podio">
+      <div class="pcard first">
+        <div class="rank">1</div>
+        <img class="ph" src="../../assets/players/liga-federal__ferro-gral-pico__menna-juan-segundo.jpg">
+        <div class="nm">J. S. Menna</div>
+        <div class="tm"><img src="../../assets/logos/liga-federal__ferro-gral-pico.png">Ferro (G. Pico)</div>
+        <div class="ast">6.6</div><div class="astlbl">AST / Juego</div>
+      </div>
+      <div class="pcard">
+        <div class="rank">2</div>
+        <img class="ph" src="../../assets/players/liga-federal__atl-tostado__skidelsky-ernesto-dario.jpg">
+        <div class="nm">E. Skidelsky</div>
+        <div class="tm"><img src="../../assets/logos/liga-federal__atl-tostado.png">Atl. Tostado</div>
+        <div class="ast">6.2</div><div class="astlbl">AST / Juego</div>
+      </div>
+      <div class="pcard">
+        <div class="rank">3</div>
+        <img class="ph" src="../../assets/players/liga-federal__almagro-esperanza__durigon-enzo.jpg">
+        <div class="nm">E. Durigon</div>
+        <div class="tm"><img src="../../assets/logos/liga-federal__almagro-esperanza.png">Almagro (Esp.)</div>
+        <div class="ast">5.6</div><div class="astlbl">AST / Juego</div>
+      </div>
+    </div>
+
+    <div id="cover-foot"></div>
+  </div>
+</div>
+
+<!-- ================= SLIDES DE JUGADOR (template via JS) ================= -->
+<div id="players-mount"></div>
+
+<script>
+const PLAYERS = [
+  {
+    rank:1, kicker:'Líder en asistencias',
+    nombre:'Juan Segundo Menna', corto:'Menna',
+    equipo:'Ferro (Gral. Pico)', pos:'Base', edad:27,
+    foto:'../../assets/players/liga-federal__ferro-gral-pico__menna-juan-segundo.jpg',
+    logo:'../../assets/logos/liga-federal__ferro-gral-pico.png',
+    shot:'../../assets/shots/liga-federal__ferro-gral-pico__menna-juan-segundo.jpg',
+    ast:'6.6', pts:'19.9', reb:'6.0', rob:'1.2', per:'2.5', min:'35.6', pj:'11',
+    usg:'27.8%', ts:'51.4%',
+    adv:{ts:'51.4%', efg:'48.8%', usg:'27.8%', tov:'11.4%', ftr:'15.7%', pm:'+11.3'},
+    term:{fg2:61, fg3:130, ast:73, ftl:20, tov:28},
+    fg2:{p:'44.3%',f:'27/61'}, fg3:{p:'34.6%',f:'45/130'}, ft:{p:'66.7%',f:'30/45'},
+    ratio:'2.6',
+    desc1:'Motor total de Ferro: al liderazgo en asistencias le suma <b>19.9 puntos y 6 rebotes</b> por juego, jugando casi 36 minutos por noche como conductor absoluto.',
+    desc2:'Alto volumen y confianza desde el triple (130 intentos) y buen cierre en la pintura. Termina las posesiones creando: <b>6.6 asistencias contra solo 2.5 pérdidas</b>.'
+  },
+  {
+    rank:2, kicker:'Segundo en asistencias',
+    nombre:'Ernesto Skidelsky', corto:'Skidelsky',
+    equipo:'Atlético Tostado', pos:'Base', edad:25,
+    foto:'../../assets/players/liga-federal__atl-tostado__skidelsky-ernesto-dario.jpg',
+    logo:'../../assets/logos/liga-federal__atl-tostado.png',
+    shot:'../../assets/shots/liga-federal__atl-tostado__skidelsky-ernesto-dario.jpg',
+    ast:'6.2', pts:'13.4', reb:'3.7', rob:'1.7', per:'2.8', min:'36.0', pj:'12',
+    usg:'22.1%', ts:'59.5%',
+    adv:{ts:'59.5%', efg:'58.8%', usg:'22.1%', tov:'19.8%', ftr:'11.7%', pm:'-1.8'},
+    term:{fg2:55, fg3:73, ast:74, ftl:10, tov:34},
+    fg2:{p:'50.9%',f:'28/55'}, fg3:{p:'41.1%',f:'30/73'}, ft:{p:'68.2%',f:'15/22'},
+    ratio:'2.2',
+    desc1:'El base de Tostado reparte <b>6.2 asistencias</b> y roba 1.7 balones por juego. Es el más eficiente del podio: <b>59.5% de tiro real</b> con uso moderado del balón.',
+    desc2:'Selección de tiro de elite: <b>50.9% en dobles y 41.1% en triples</b>. Cuando no anota, genera para otros: 6.2 asistencias, 2.2 por cada pérdida.'
+  },
+  {
+    rank:3, kicker:'Tercero en asistencias',
+    nombre:'Enzo Durigon', corto:'Durigon',
+    equipo:'Almagro (Esperanza)', pos:'Base', edad:22,
+    foto:'../../assets/players/liga-federal__almagro-esperanza__durigon-enzo.jpg',
+    logo:'../../assets/logos/liga-federal__almagro-esperanza.png',
+    shot:'../../assets/shots/liga-federal__almagro-esperanza__durigon-enzo.jpg',
+    ast:'5.6', pts:'12.9', reb:'5.6', rob:'1.2', per:'1.9', min:'36.1', pj:'17',
+    usg:'23.1%', ts:'43.7%',
+    adv:{ts:'43.7%', efg:'38.0%', usg:'23.1%', tov:'11.8%', ftr:'24.0%', pm:'+3.6'},
+    term:{fg2:96, fg3:121, ast:95, ftl:30, tov:32},
+    fg2:{p:'44.8%',f:'43/96'}, fg3:{p:'22.3%',f:'27/121'}, ft:{p:'76.5%',f:'52/68'},
+    ratio:'2.9',
+    desc1:'Con solo <b>22 años</b> maneja a Almagro 36 minutos por noche: 5.6 asistencias y apenas 1.9 pérdidas, <b>el mejor cuidado de balón del podio</b>.',
+    desc2:'Su valor está en la creación: <b>2.9 asistencias por cada pérdida</b>, la mejor relación del podio. El tiro externo (22.3% en triples) sigue siendo su deuda.'
+  }
+];
+
+function profileSlide(p,i){
+return `
+<div class="slide profile" id="s${2+i*2}">
+  <div class="court-holder"></div><div class="grain"></div>
+  <div class="content">
+    <div class="topbar">
+      <div class="brand"><img class="logo" style="width:78px;height:78px" src="../../assets/statsarg-logo.svg">
+        <div class="word" style="font-size:28px">STATS<span>ARG.</span></div></div>
+      <div class="liga-chip"><img src="../../assets/leagues/liga-federal.png"><div class="t" style="font-size:26px">Liga Federal</div></div>
+    </div>
+
+    <div class="rankband">
+      <div class="num">${p.rank}</div>
+      <div class="lbl">
+        <div class="k">${p.kicker} · Liga Federal</div>
+        <h2>${p.nombre}</h2>
+        <div class="sub"><img src="${p.logo}">${p.equipo}<span class="dot"></span>${p.pos}<span class="dot"></span>${p.edad} años</div>
+      </div>
+    </div>
+
+    <div class="profile-main">
+      <div class="photo-wrap">
+        <img class="ph" src="${p.foto}">
+        <div class="tag">${p.pj} PJ · <span>${p.min} min</span> por juego</div>
+      </div>
+      <div class="stats-col">
+        <div class="hero-tile">
+          <div class="lbl">Asistencias<br>por juego</div>
+          <div class="val">${p.ast}</div>
+        </div>
+        <div class="grid">
+          <div class="tile"><div class="v">${p.pts}</div><div class="k">Puntos</div></div>
+          <div class="tile"><div class="v">${p.reb}</div><div class="k">Rebotes</div></div>
+          <div class="tile"><div class="v">${p.rob}</div><div class="k">Robos</div></div>
+          <div class="tile"><div class="v">${p.per}</div><div class="k">Pérdidas</div></div>
+        </div>
+        <div class="advpanel">
+          <div class="at">Métricas avanzadas · Four Factors + eficiencia</div>
+          <div class="advrow">
+            <div class="m"><div class="v hl">${p.adv.ts}</div><div class="k">TS%</div></div>
+            <div class="m"><div class="v">${p.adv.efg}</div><div class="k">eFG%</div></div>
+            <div class="m"><div class="v">${p.adv.usg}</div><div class="k">USG%</div></div>
+            <div class="m"><div class="v">${p.adv.tov}</div><div class="k">TOV%</div></div>
+            <div class="m"><div class="v">${p.adv.ftr}</div><div class="k">FT Rate</div></div>
+            <div class="m"><div class="v ${p.adv.pm.charAt(0)==='-'?'neg':'pos'}">${p.adv.pm}</div><div class="k">+/− PJ</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="descbox"><div class="desc">${p.desc1}</div></div>
+
+    ${foot(1+i*2, 'Mapa de tiro <b>&#8594;</b>')}
+  </div>
+</div>`;
+}
+
+function shotSlide(p,i){
+return `
+<div class="slide shot" id="s${3+i*2}">
+  <div class="court-holder"></div><div class="grain"></div>
+  <div class="content">
+    <div class="topbar">
+      <div class="brand"><img class="logo" style="width:78px;height:78px" src="../../assets/statsarg-logo.svg">
+        <div class="word" style="font-size:28px">STATS<span>ARG.</span></div></div>
+      <div class="liga-chip"><img src="../../assets/leagues/liga-federal.png"><div class="t" style="font-size:26px">Liga Federal</div></div>
+    </div>
+
+    <div class="shot-head">
+      <div class="k">#${p.rank} en asistencias · ${p.equipo}</div>
+      <h2>${p.corto} · <span style="color:var(--teal-ink)">el tiro y la creación</span></h2>
+    </div>
+
+    <div class="shot-main">
+      <div class="mapcard">
+        <div class="crop"><img src="${p.shot}"></div>
+        <div class="cap">Zonas de tiro · <span>${p.corto} vs. promedio de la liga</span></div>
+      </div>
+      <div class="panels-row">
+        <div class="panel">
+          <h3>Detalle de tiro</h3>
+          <div class="splitrow">
+            <div class="split"><div class="v">${p.fg2.p}</div><div class="f">${p.fg2.f}</div><div class="k">Dobles</div></div>
+            <div class="split"><div class="v">${p.fg3.p}</div><div class="f">${p.fg3.f}</div><div class="k">Triples</div></div>
+            <div class="split"><div class="v">${p.ft.p}</div><div class="f">${p.ft.f}</div><div class="k">Libres</div></div>
+            <div class="split" style="background:rgba(58,201,180,.13)"><div class="v" style="color:var(--teal-ink)">${p.ts}</div><div class="f">&nbsp;</div><div class="k">Tiro real</div></div>
+          </div>
+        </div>
+        <div class="panel dark">
+          <h3>Cómo termina las posesiones</h3>
+          ${donut(p.term)}
+        </div>
+      </div>
+    </div>
+
+    <div class="descbox"><div class="desc">${p.desc2}</div></div>
+
+    ${foot(2+i*2, i<2 ? 'Sigue el podio <b>&#8594;</b>' : 'Fin del podio')}
+  </div>
+</div>`;
+}
+
+let html='';
+PLAYERS.forEach((p,i)=>{ html+=profileSlide(p,i)+shotSlide(p,i); });
+document.getElementById('players-mount').outerHTML=html;
+document.getElementById('cover-foot').outerHTML=foot(0,'Deslizá <b>&#8594;</b>');
+document.querySelectorAll('.court-holder').forEach(el=>{ el.outerHTML=COURT; });
+</script>
+</body>
+</html>
