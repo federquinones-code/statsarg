@@ -106,7 +106,7 @@ body{background:#555;font-family:'Barlow Semi',sans-serif;color:var(--navy)}
 .rankband .lbl .sub img{width:44px;height:44px;object-fit:contain}
 .rankband .lbl .sub .dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
 
-.profile-main{display:flex;gap:44px;margin-top:46px;align-items:stretch}
+.profile-main{display:flex;gap:44px;margin-top:46px;align-items:stretch;min-width:0}
 .photo-wrap{width:400px;flex:none;position:relative}
 .photo-wrap .ph{width:400px;height:476px;object-fit:cover;object-position:top;border-radius:28px;
   border:1px solid var(--line);background:#e8e2d2;box-shadow:0 12px 28px rgba(22,40,60,.12);display:block}
@@ -115,18 +115,33 @@ body{background:#555;font-family:'Barlow Semi',sans-serif;color:var(--navy)}
   font-family:'Barlow Condensed';font-weight:700;font-size:30px;letter-spacing:3px;text-transform:uppercase}
 .photo-wrap .tag span{color:var(--cyan)}
 
-.stats-col{flex:1;display:flex;flex-direction:column;gap:24px}
-.hero-tile{background:var(--navy);border-radius:26px;padding:26px 34px;display:flex;align-items:center;
+.stats-col{flex:1;min-width:0;display:flex;flex-direction:column;gap:20px}
+.hero-tile{background:var(--navy);border-radius:26px;padding:24px 34px;display:flex;align-items:center;
   justify-content:space-between;box-shadow:0 12px 26px rgba(22,40,60,.16)}
 .hero-tile .lbl{font-family:'Barlow Condensed';font-weight:600;font-size:32px;letter-spacing:4px;
   color:#c3d3df;text-transform:uppercase;line-height:1.15}
-.hero-tile .val{font-family:'Archivo Black';font-size:96px;color:var(--cyan);line-height:1}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.tile{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 10px 14px;text-align:center}
-.tile .v{font-family:'Archivo Black';font-size:44px;line-height:1}
-.tile .k{font-family:'Barlow Condensed';font-weight:600;font-size:23px;letter-spacing:2px;color:var(--navy-soft);
+.hero-tile .val{font-family:'Archivo Black';font-size:88px;color:var(--cyan);line-height:1}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 8px 14px;text-align:center}
+.tile .v{font-family:'Archivo Black';font-size:42px;line-height:1}
+.tile .k{font-family:'Barlow Condensed';font-weight:600;font-size:22px;letter-spacing:1.5px;color:var(--navy-soft);
   text-transform:uppercase;margin-top:8px}
 .tile.hl .v{color:var(--teal-ink)}
+
+/* métricas avanzadas */
+.advpanel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 18px 14px}
+.advpanel .at{font-family:'Barlow Condensed';font-weight:700;font-size:20px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--navy-soft);margin-bottom:12px}
+.advrow{display:grid;grid-template-columns:repeat(3,1fr);row-gap:16px}
+.advrow .m{min-width:0;text-align:center;position:relative;padding:2px 4px}
+.advrow .m:not(:nth-child(3n))::after{content:'';position:absolute;right:0;top:2px;bottom:2px;width:1px;background:var(--line)}
+.advrow .m:nth-child(-n+3){padding-bottom:14px;border-bottom:1px solid var(--line)}
+.advrow .m:nth-child(n+4){padding-top:2px}
+.advrow .m .v{font-family:'Archivo Black';font-size:34px;line-height:1;letter-spacing:-.5px}
+.advrow .m .v.neg{color:#b8564f}
+.advrow .m .v.pos{color:var(--teal-ink)}
+.advrow .m .k{font-family:'Barlow Condensed';font-weight:600;font-size:20px;letter-spacing:1px;
+  color:var(--navy-soft);text-transform:uppercase;margin-top:6px}
 
 .profile .descbox{margin-top:58px;background:var(--card);border-left:8px solid var(--orange);
   border-radius:0 18px 18px 0;padding:24px 30px;box-shadow:0 6px 16px rgba(22,40,60,.05)}
@@ -137,17 +152,28 @@ body{background:#555;font-family:'Barlow Semi',sans-serif;color:var(--navy)}
   text-transform:uppercase;color:var(--teal-ink)}
 .shot-head h2{font-family:'Archivo Black';font-size:44px;text-transform:uppercase;line-height:1;margin-top:6px}
 
-.shot-main{display:flex;flex-direction:column;margin-top:22px;flex:1;min-height:0;gap:22px}
-.mapcard{width:648px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;
+.shot-main{display:flex;flex-direction:column;margin-top:20px;flex:1;min-height:0;gap:20px}
+.mapcard{width:566px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;
   box-shadow:0 12px 28px rgba(22,40,60,.10)}
-.mapcard .crop{width:648px;height:452px;overflow:hidden;position:relative}
-.mapcard img{width:648px;display:block;margin-top:-92px}
+.mapcard .crop{width:566px;height:392px;overflow:hidden;position:relative}
+.mapcard img{width:566px;display:block;margin-top:-79px}
 .mapcard .cap{background:var(--navy);color:#fff;text-align:center;
-  font-family:'Barlow Condensed';font-weight:700;font-size:24px;letter-spacing:2px;text-transform:uppercase;padding:11px 6px}
+  font-family:'Barlow Condensed';font-weight:700;font-size:23px;letter-spacing:2px;text-transform:uppercase;padding:10px 6px}
 .mapcard .cap span{color:var(--cyan)}
 
 .panels-row{display:flex;gap:22px;align-items:stretch}
 .panel{flex:1;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px 22px}
+/* donut cómo termina las posesiones */
+.donut-wrap{display:flex;align-items:center;gap:18px;margin-top:14px}
+.donut{width:150px;height:150px;flex:none}
+.donut .seg{transition:none}
+.legend{flex:1;min-width:0;display:flex;flex-direction:column;gap:9px}
+.legend .li{display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed';font-weight:600;
+  font-size:22px;color:#d4e0e9;line-height:1}
+.legend .li i{width:15px;height:15px;border-radius:4px;flex:none}
+.legend .li .lbl{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.legend .li .pv{font-family:'Archivo Black';font-size:22px;color:#fff}
+.legend .li .pv small{font-family:'Barlow Condensed';font-weight:600;color:#9fb2c0;font-size:17px}
 .panel h3{font-family:'Barlow Condensed';font-weight:700;font-size:26px;letter-spacing:2px;
   text-transform:uppercase;color:var(--navy);display:flex;align-items:center;gap:11px}
 .panel h3::before{content:'';width:13px;height:13px;border-radius:4px;background:var(--orange)}
@@ -225,6 +251,34 @@ function foot(active,note){
     <div class="fnote">${note}</div>
   </div>`;
 }
+
+// gráfico de torta (dona) de cómo termina las posesiones
+function donut(t){
+  const segs=[
+    {k:'Tiro de 2', v:t.fg2, c:'#12836f'},
+    {k:'Tiro de 3', v:t.fg3, c:'#cf7a52'},
+    {k:'Asistencia', v:t.ast, c:'#3ac9b4'},
+    {k:'Viaje a la línea', v:t.ftl, c:'#e0a94e'},
+    {k:'Pérdida', v:t.tov, c:'#b8564f'}
+  ];
+  const total=segs.reduce((s,x)=>s+x.v,0);
+  let off=25, ring='', leg='';
+  segs.forEach(s=>{
+    const pct=s.v/total*100;
+    ring+=`<circle class="seg" r="15.915" cx="21" cy="21" fill="none" stroke="${s.c}" stroke-width="9"
+      stroke-dasharray="${pct.toFixed(2)} ${(100-pct).toFixed(2)}" stroke-dashoffset="${off.toFixed(2)}"></circle>`;
+    off=(off-pct+100)%100;
+    leg+=`<div class="li"><i style="background:${s.c}"></i><span class="lbl">${s.k}</span>
+      <span class="pv">${Math.round(pct)}%<small> · ${s.v}</small></span></div>`;
+  });
+  return `<div class="donut-wrap">
+    <svg class="donut" viewBox="0 0 42 42">
+      <circle r="15.915" cx="21" cy="21" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="9"></circle>
+      ${ring}
+    </svg>
+    <div class="legend">${leg}</div>
+  </div>`;
+}
 </script>
 
 <!-- ================= SLIDE 1 · PORTADA ================= -->
@@ -286,8 +340,9 @@ const PLAYERS = [
     logo:'../../assets/logos/liga-federal__ferro-gral-pico.png',
     shot:'../../assets/shots/liga-federal__ferro-gral-pico__menna-juan-segundo.jpg',
     ast:'6.6', pts:'19.9', reb:'6.0', rob:'1.2', per:'2.5', min:'35.6', pj:'11',
-    eff:'31.6',
     usg:'27.8%', ts:'51.4%',
+    adv:{ts:'51.4%', efg:'48.8%', usg:'27.8%', tov:'11.4%', ftr:'15.7%', pm:'+11.3'},
+    term:{fg2:61, fg3:130, ast:73, ftl:20, tov:28},
     fg2:{p:'44.3%',f:'27/61'}, fg3:{p:'34.6%',f:'45/130'}, ft:{p:'66.7%',f:'30/45'},
     ratio:'2.6',
     desc1:'Motor total de Ferro: al liderazgo en asistencias le suma <b>19.9 puntos y 6 rebotes</b> por juego, jugando casi 36 minutos por noche como conductor absoluto.',
@@ -301,8 +356,9 @@ const PLAYERS = [
     logo:'../../assets/logos/liga-federal__atl-tostado.png',
     shot:'../../assets/shots/liga-federal__atl-tostado__skidelsky-ernesto-dario.jpg',
     ast:'6.2', pts:'13.4', reb:'3.7', rob:'1.7', per:'2.8', min:'36.0', pj:'12',
-    eff:'24.8',
     usg:'22.1%', ts:'59.5%',
+    adv:{ts:'59.5%', efg:'58.8%', usg:'22.1%', tov:'19.8%', ftr:'11.7%', pm:'-1.8'},
+    term:{fg2:55, fg3:73, ast:74, ftl:10, tov:34},
     fg2:{p:'50.9%',f:'28/55'}, fg3:{p:'41.1%',f:'30/73'}, ft:{p:'68.2%',f:'15/22'},
     ratio:'2.2',
     desc1:'El base de Tostado reparte <b>6.2 asistencias</b> y roba 1.7 balones por juego. Es el más eficiente del podio: <b>59.5% de tiro real</b> con uso moderado del balón.',
@@ -316,8 +372,9 @@ const PLAYERS = [
     logo:'../../assets/logos/liga-federal__almagro-esperanza.png',
     shot:'../../assets/shots/liga-federal__almagro-esperanza__durigon-enzo.jpg',
     ast:'5.6', pts:'12.9', reb:'5.6', rob:'1.2', per:'1.9', min:'36.1', pj:'17',
-    eff:'23.5',
     usg:'23.1%', ts:'43.7%',
+    adv:{ts:'43.7%', efg:'38.0%', usg:'23.1%', tov:'11.8%', ftr:'24.0%', pm:'+3.6'},
+    term:{fg2:96, fg3:121, ast:95, ftl:30, tov:32},
     fg2:{p:'44.8%',f:'43/96'}, fg3:{p:'22.3%',f:'27/121'}, ft:{p:'76.5%',f:'52/68'},
     ratio:'2.9',
     desc1:'Con solo <b>22 años</b> maneja a Almagro 36 minutos por noche: 5.6 asistencias y apenas 1.9 pérdidas, <b>el mejor cuidado de balón del podio</b>.',
@@ -360,8 +417,17 @@ return `
           <div class="tile"><div class="v">${p.reb}</div><div class="k">Rebotes</div></div>
           <div class="tile"><div class="v">${p.rob}</div><div class="k">Robos</div></div>
           <div class="tile"><div class="v">${p.per}</div><div class="k">Pérdidas</div></div>
-          <div class="tile"><div class="v">${p.usg}</div><div class="k">Uso (USG)</div></div>
-          <div class="tile hl"><div class="v">${p.eff}</div><div class="k">Índice PER</div></div>
+        </div>
+        <div class="advpanel">
+          <div class="at">Métricas avanzadas · Four Factors + eficiencia</div>
+          <div class="advrow">
+            <div class="m"><div class="v hl">${p.adv.ts}</div><div class="k">TS%</div></div>
+            <div class="m"><div class="v">${p.adv.efg}</div><div class="k">eFG%</div></div>
+            <div class="m"><div class="v">${p.adv.usg}</div><div class="k">USG%</div></div>
+            <div class="m"><div class="v">${p.adv.tov}</div><div class="k">TOV%</div></div>
+            <div class="m"><div class="v">${p.adv.ftr}</div><div class="k">FT Rate</div></div>
+            <div class="m"><div class="v ${p.adv.pm.charAt(0)==='-'?'neg':'pos'}">${p.adv.pm}</div><div class="k">+/− PJ</div></div>
+          </div>
         </div>
       </div>
     </div>
@@ -392,7 +458,7 @@ return `
     <div class="shot-main">
       <div class="mapcard">
         <div class="crop"><img src="${p.shot}"></div>
-        <div class="cap">Mapa de tiro por zonas · <span>${p.corto} vs. promedio de la liga</span></div>
+        <div class="cap">Zonas de tiro · <span>${p.corto} vs. promedio de la liga</span></div>
       </div>
       <div class="panels-row">
         <div class="panel">
@@ -406,12 +472,7 @@ return `
         </div>
         <div class="panel dark">
           <h3>Cómo termina las posesiones</h3>
-          <div class="possrow">
-            <div class="poss"><div class="v cy">${p.ast}</div><div class="k">Asist. / juego</div></div>
-            <div class="poss"><div class="v">${p.per}</div><div class="k">Pérdidas / juego</div></div>
-            <div class="poss"><div class="v">${p.usg}</div><div class="k">Uso (USG%)</div></div>
-          </div>
-          <div class="ratio-note">Genera <b>${p.ratio}</b> asistencias por cada pérdida</div>
+          ${donut(p.term)}
         </div>
       </div>
     </div>
@@ -426,7 +487,7 @@ return `
 let html='';
 PLAYERS.forEach((p,i)=>{ html+=profileSlide(p,i)+shotSlide(p,i); });
 document.getElementById('players-mount').outerHTML=html;
-document.getElementById('cover-foot').outerHTML=foot(0,'Mínimo 10 juegos · Deslizá <b>&#8594;</b>');
+document.getElementById('cover-foot').outerHTML=foot(0,'Deslizá <b>&#8594;</b>');
 document.querySelectorAll('.court-holder').forEach(el=>{ el.outerHTML=COURT; });
 </script>
 </body>
