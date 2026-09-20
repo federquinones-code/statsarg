@@ -1,0 +1,815 @@
+{
+ "meta": {
+  "liga": "LIGA NACIONAL FEB FEMENINA 2026",
+  "federacion": "FECUB · ECUADOR",
+  "nosotras": "ICCAN",
+  "rival": "Ambato Soldiers",
+  "escudoNosotras": "escudos/iccan.png",
+  "escudoRival": "escudos/ambato-soldiers.png"
+ },
+ "marcador": {
+  "nosotras": 32,
+  "rival": 31,
+  "etiqueta": "AL DESCANSO",
+  "parciales": [
+   {
+    "n": 1,
+    "nosotras": 18,
+    "rival": 10
+   },
+   {
+    "n": 2,
+    "nosotras": 14,
+    "rival": 21
+   }
+  ]
+ },
+ "cuatroFactores": [
+  {
+   "clave": "eFG%",
+   "desc": "efectividad de tiro",
+   "nosotras": 44,
+   "rival": 41,
+   "mejor": "alto"
+  },
+  {
+   "clave": "TOV%",
+   "desc": "cuánto la perdió",
+   "nosotras": 21,
+   "rival": 17,
+   "mejor": "bajo"
+  },
+  {
+   "clave": "ORB%",
+   "desc": "rebote ofensivo",
+   "nosotras": 41,
+   "rival": 21,
+   "mejor": "alto"
+  },
+  {
+   "clave": "FTr",
+   "desc": "llegada a la línea",
+   "nosotras": 12,
+   "rival": 31,
+   "mejor": "alto"
+  }
+ ],
+ "rebote": {
+  "ofensivo": [
+   9,
+   4
+  ],
+  "defensivo": [
+   15,
+   13
+  ]
+ },
+ "transicion": {
+  "nosotras": {
+   "contra": 2,
+   "detalle": [
+    "+5 tras robo",
+    "+6 2ª opción"
+   ]
+  },
+  "rival": {
+   "contra": 10,
+   "detalle": [
+    {
+     "texto": "6 tras pérdida",
+     "fuerte": true
+    },
+    {
+     "texto": "(7 PT nuestras)"
+    }
+   ]
+  }
+ },
+ "resumen": "Ganamos por 1 al descanso. En efectividad de tiro ellas 41% (2/10 de tres) y nosotras 44% (4/16 de tres): el tiro está parejo.\nNos costaron 6 puntos nuestras 7 pérdidas. Rebote 24-17. Foco en el segundo tiempo.",
+ "mapaTiro": {
+  "nota": "Pintura 16-18 · nuestros pts: pintura 16 / afuera 16.",
+  "nosotras": {
+   "linea": "13/34 en cancha",
+   "tiros": [
+    {
+     "x": 0.483,
+     "y": 0.326,
+     "metido": false
+    },
+    {
+     "x": 0.484,
+     "y": 0.096,
+     "metido": true
+    },
+    {
+     "x": 0.526,
+     "y": 0.102,
+     "metido": true
+    },
+    {
+     "x": 0.424,
+     "y": 0.079,
+     "metido": false
+    },
+    {
+     "x": 0.414,
+     "y": 0.095,
+     "metido": true
+    },
+    {
+     "x": 0.909,
+     "y": 0.219,
+     "metido": false
+    },
+    {
+     "x": 0.921,
+     "y": 0.275,
+     "metido": false
+    },
+    {
+     "x": 0.423,
+     "y": 0.223,
+     "metido": false
+    },
+    {
+     "x": 0.068,
+     "y": 0.322,
+     "metido": false
+    },
+    {
+     "x": 0.505,
+     "y": 0.143,
+     "metido": false
+    },
+    {
+     "x": 0.715,
+     "y": 0.231,
+     "metido": true
+    },
+    {
+     "x": 0.898,
+     "y": 0.319,
+     "metido": false
+    },
+    {
+     "x": 0.887,
+     "y": 0.151,
+     "metido": false
+    },
+    {
+     "x": 0.407,
+     "y": 0.081,
+     "metido": true
+    },
+    {
+     "x": 0.404,
+     "y": 0.303,
+     "metido": false
+    },
+    {
+     "x": 0.444,
+     "y": 0.06,
+     "metido": false
+    },
+    {
+     "x": 0.54,
+     "y": 0.324,
+     "metido": true
+    },
+    {
+     "x": 0.589,
+     "y": 0.086,
+     "metido": false
+    },
+    {
+     "x": 0.515,
+     "y": 0.076,
+     "metido": true
+    },
+    {
+     "x": 0.345,
+     "y": 0.409,
+     "metido": false
+    },
+    {
+     "x": 0.421,
+     "y": 0.1,
+     "metido": true
+    },
+    {
+     "x": 0.558,
+     "y": 0.422,
+     "metido": false
+    },
+    {
+     "x": 0.279,
+     "y": 0.28,
+     "metido": false
+    },
+    {
+     "x": 0.037,
+     "y": 0.257,
+     "metido": false
+    },
+    {
+     "x": 0.529,
+     "y": 0.159,
+     "metido": false
+    },
+    {
+     "x": 0.513,
+     "y": 0.107,
+     "metido": false
+    },
+    {
+     "x": 0.448,
+     "y": 0.097,
+     "metido": true
+    },
+    {
+     "x": 0.409,
+     "y": 0.14,
+     "metido": true
+    },
+    {
+     "x": 0.946,
+     "y": 0.055,
+     "metido": false
+    },
+    {
+     "x": 0.474,
+     "y": 0.097,
+     "metido": true
+    },
+    {
+     "x": 0.63,
+     "y": 0.417,
+     "metido": false
+    },
+    {
+     "x": 0.362,
+     "y": 0.487,
+     "metido": true
+    },
+    {
+     "x": 0.565,
+     "y": 0.037,
+     "metido": true
+    },
+    {
+     "x": 0.341,
+     "y": 0.181,
+     "metido": false
+    }
+   ]
+  },
+  "rival": {
+   "linea": "11/29 en cancha",
+   "tiros": [
+    {
+     "x": 0.396,
+     "y": 0.345,
+     "metido": false
+    },
+    {
+     "x": 0.423,
+     "y": 0.412,
+     "metido": true
+    },
+    {
+     "x": 0.07,
+     "y": 0.068,
+     "metido": false
+    },
+    {
+     "x": 0.878,
+     "y": 0.037,
+     "metido": false
+    },
+    {
+     "x": 0.561,
+     "y": 0.135,
+     "metido": false
+    },
+    {
+     "x": 0.855,
+     "y": 0.424,
+     "metido": false
+    },
+    {
+     "x": 0.631,
+     "y": 0.256,
+     "metido": false
+    },
+    {
+     "x": 0.4,
+     "y": 0.041,
+     "metido": true
+    },
+    {
+     "x": 0.955,
+     "y": 0.325,
+     "metido": true
+    },
+    {
+     "x": 0.496,
+     "y": 0.076,
+     "metido": true
+    },
+    {
+     "x": 0.4,
+     "y": 0.464,
+     "metido": false
+    },
+    {
+     "x": 0.504,
+     "y": 0.147,
+     "metido": false
+    },
+    {
+     "x": 0.092,
+     "y": 0.325,
+     "metido": true
+    },
+    {
+     "x": 0.539,
+     "y": 0.154,
+     "metido": false
+    },
+    {
+     "x": 0.59,
+     "y": 0.106,
+     "metido": true
+    },
+    {
+     "x": 0.125,
+     "y": 0.246,
+     "metido": false
+    },
+    {
+     "x": 0.552,
+     "y": 0.062,
+     "metido": false
+    },
+    {
+     "x": 0.575,
+     "y": 0.106,
+     "metido": true
+    },
+    {
+     "x": 0.413,
+     "y": 0.049,
+     "metido": true
+    },
+    {
+     "x": 0.898,
+     "y": 0.112,
+     "metido": false
+    },
+    {
+     "x": 0.915,
+     "y": 0.227,
+     "metido": false
+    },
+    {
+     "x": 0.965,
+     "y": 0.241,
+     "metido": true
+    },
+    {
+     "x": 0.422,
+     "y": 0.104,
+     "metido": true
+    },
+    {
+     "x": 0.104,
+     "y": 0.047,
+     "metido": true
+    },
+    {
+     "x": 0.558,
+     "y": 0.086,
+     "metido": false
+    },
+    {
+     "x": 0.527,
+     "y": 0.154,
+     "metido": false
+    },
+    {
+     "x": 0.119,
+     "y": 0.335,
+     "metido": false
+    },
+    {
+     "x": 0.948,
+     "y": 0.092,
+     "metido": false
+    },
+    {
+     "x": 0.365,
+     "y": 0.366,
+     "metido": false
+    }
+   ]
+  }
+ },
+ "scouting": [
+  {
+   "num": "#8",
+   "nombre": "Buggs, Lily Isabelle",
+   "linea": "3P 0/1   2P 4/9   TL 2/3",
+   "pts": 10,
+   "consejo": "Anota adentro; de tres va 5/23 en el torneo: pasar por abajo y cerrarle la entrada.",
+   "torneo": "En el torneo (4 PJ): 3P 5/23 · 2P 14/43 · TL 17/26 · 15.0 pts"
+  },
+  {
+   "num": "#11",
+   "nombre": "Preciado Andy, Yuleyka Anahi",
+   "linea": "3P 2/2   2P 0/1",
+   "pts": 6,
+   "consejo": "Vive del triple: perseguirla sobre cortinas y no dejarla recibir liberada.",
+   "torneo": "En el torneo (4 PJ): 3P 2/5 · 2P 3/8 · TL 2/3 · 3.5 pts"
+  },
+  {
+   "num": "#19",
+   "nombre": "Moreira Sarango, Danna Cristina",
+   "linea": "3P 0/0   TL 5/6",
+   "pts": 5,
+   "consejo": "Todo lo saca de la línea: defensa vertical, sin faltas baratas.",
+   "torneo": "En el torneo (4 PJ): 3P 3/8 · 2P 5/12 · TL 2/8 · 5.2 pts"
+  },
+  {
+   "num": "#28",
+   "nombre": "Feijoo Coello, Karym Esther",
+   "linea": "3P 0/0   2P 2/4",
+   "pts": 4,
+   "consejo": "Sólo juega adentro (0 triples en el torneo): flotarla afuera y cerrarle el aro.",
+   "torneo": "En el torneo (4 PJ): 3P 0/0 · 2P 9/18 · TL 3/6 · 5.2 pts"
+  }
+ ],
+ "fortalezas": [
+  "Ganamos el tablero 24-17."
+ ],
+ "debilidades": [
+  "7 pérdidas nuestras = 6 pts en contra."
+ ],
+ "aMejorar": [
+  "CUIDAR LA PELOTA: pase seguro y balance defensivo tras cada tiro."
+ ],
+ "box": {
+  "nosotras": {
+   "jugadoras": [
+    {
+     "num": "#44",
+     "nombre": "Autry B.",
+     "pts": 12,
+     "dosp": "6/7",
+     "tresp": "0/0",
+     "tl": "0/0",
+     "ro": 3,
+     "rd": 3,
+     "reb": 6,
+     "as": 1,
+     "rec": 0,
+     "per": 1,
+     "val": 16,
+     "efg": 86,
+     "ts": 86
+    },
+    {
+     "num": "#69",
+     "nombre": "Macias Zambrano A.",
+     "pts": 5,
+     "dosp": "1/1",
+     "tresp": "1/1",
+     "tl": "0/2",
+     "ro": 0,
+     "rd": 5,
+     "reb": 5,
+     "as": 0,
+     "rec": 1,
+     "per": 1,
+     "val": 7,
+     "efg": 125,
+     "ts": 87
+    },
+    {
+     "num": "#11",
+     "nombre": "Del Rosario Lopez M.",
+     "pts": 3,
+     "dosp": "0/0",
+     "tresp": "1/3",
+     "tl": "0/0",
+     "ro": 1,
+     "rd": 1,
+     "reb": 2,
+     "as": 1,
+     "rec": 0,
+     "per": 1,
+     "val": 3,
+     "efg": 50,
+     "ts": 50
+    },
+    {
+     "num": "#77",
+     "nombre": "Criollo Gualotuña D.",
+     "pts": 3,
+     "dosp": "0/0",
+     "tresp": "1/4",
+     "tl": "0/0",
+     "ro": 1,
+     "rd": 0,
+     "reb": 1,
+     "as": 0,
+     "rec": 0,
+     "per": 0,
+     "val": 1,
+     "efg": 38,
+     "ts": 38
+    },
+    {
+     "num": "#5",
+     "nombre": "Ortiz Paez F.",
+     "pts": 3,
+     "dosp": "0/2",
+     "tresp": "1/2",
+     "tl": "0/0",
+     "ro": 0,
+     "rd": 1,
+     "reb": 1,
+     "as": 1,
+     "rec": 0,
+     "per": 2,
+     "val": -1,
+     "efg": 38,
+     "ts": 38
+    },
+    {
+     "num": "#4",
+     "nombre": "Ramon Chacon Y.",
+     "pts": 2,
+     "dosp": "0/0",
+     "tresp": "0/3",
+     "tl": "2/2",
+     "ro": 0,
+     "rd": 2,
+     "reb": 2,
+     "as": 0,
+     "rec": 0,
+     "per": 0,
+     "val": 1,
+     "efg": 0,
+     "ts": 26
+    },
+    {
+     "num": "#12",
+     "nombre": "Reiban Morocho A.",
+     "pts": 2,
+     "dosp": "1/2",
+     "tresp": "0/2",
+     "tl": "0/0",
+     "ro": 2,
+     "rd": 0,
+     "reb": 2,
+     "as": 1,
+     "rec": 0,
+     "per": 0,
+     "val": -1,
+     "efg": 25,
+     "ts": 25
+    },
+    {
+     "num": "#23",
+     "nombre": "Lasso Perez D.",
+     "pts": 2,
+     "dosp": "1/5",
+     "tresp": "0/1",
+     "tl": "0/0",
+     "ro": 0,
+     "rd": 1,
+     "reb": 1,
+     "as": 1,
+     "rec": 0,
+     "per": 1,
+     "val": -3,
+     "efg": 17,
+     "ts": 17
+    },
+    {
+     "num": "#22",
+     "nombre": "Rojas Mora D.",
+     "pts": 0,
+     "dosp": "0/1",
+     "tresp": "0/0",
+     "tl": "0/0",
+     "ro": 0,
+     "rd": 0,
+     "reb": 0,
+     "as": 0,
+     "rec": 0,
+     "per": 0,
+     "val": -1,
+     "efg": 0,
+     "ts": 0
+    }
+   ],
+   "equipo": {
+    "pts": 32,
+    "dosp": "9/18",
+    "tresp": "4/16",
+    "tl": "2/4",
+    "ro": 9,
+    "rd": 15,
+    "reb": 24,
+    "as": 5,
+    "rec": 1,
+    "per": 7,
+    "val": "",
+    "efg": 44,
+    "ts": 45
+   }
+  },
+  "rival": {
+   "jugadoras": [
+    {
+     "num": "#8",
+     "nombre": "Buggs L.",
+     "pts": 10,
+     "dosp": "4/9",
+     "tresp": "0/1",
+     "tl": "2/3",
+     "ro": 1,
+     "rd": 2,
+     "reb": 3,
+     "as": 0,
+     "rec": 1,
+     "per": 0,
+     "val": 7,
+     "efg": 40,
+     "ts": 44
+    },
+    {
+     "num": "#11",
+     "nombre": "Preciado Andy Y.",
+     "pts": 6,
+     "dosp": "0/1",
+     "tresp": "2/2",
+     "tl": "0/0",
+     "ro": 1,
+     "rd": 2,
+     "reb": 3,
+     "as": 0,
+     "rec": 0,
+     "per": 0,
+     "val": 7,
+     "efg": 100,
+     "ts": 100
+    },
+    {
+     "num": "#19",
+     "nombre": "Moreira Sarango D.",
+     "pts": 5,
+     "dosp": "0/0",
+     "tresp": "0/0",
+     "tl": "5/6",
+     "ro": 0,
+     "rd": 0,
+     "reb": 0,
+     "as": 1,
+     "rec": 0,
+     "per": 0,
+     "val": 4,
+     "efg": 0,
+     "ts": 95
+    },
+    {
+     "num": "#28",
+     "nombre": "Feijoo Coello K.",
+     "pts": 4,
+     "dosp": "2/4",
+     "tresp": "0/0",
+     "tl": "0/0",
+     "ro": 2,
+     "rd": 5,
+     "reb": 7,
+     "as": 0,
+     "rec": 1,
+     "per": 1,
+     "val": 10,
+     "efg": 50,
+     "ts": 50
+    },
+    {
+     "num": "#27",
+     "nombre": "Garcia Cardenas M.",
+     "pts": 4,
+     "dosp": "2/2",
+     "tresp": "0/1",
+     "tl": "0/0",
+     "ro": 0,
+     "rd": 2,
+     "reb": 2,
+     "as": 1,
+     "rec": 1,
+     "per": 1,
+     "val": 5,
+     "efg": 67,
+     "ts": 67
+    },
+    {
+     "num": "#4",
+     "nombre": "Ramos Aldaz S.",
+     "pts": 2,
+     "dosp": "1/1",
+     "tresp": "0/1",
+     "tl": "0/0",
+     "ro": 0,
+     "rd": 0,
+     "reb": 0,
+     "as": 0,
+     "rec": 0,
+     "per": 1,
+     "val": 0,
+     "efg": 50,
+     "ts": 50
+    },
+    {
+     "num": "#21",
+     "nombre": "Ocana Salas C.",
+     "pts": 0,
+     "dosp": "0/0",
+     "tresp": "0/1",
+     "tl": "0/0",
+     "ro": 0,
+     "rd": 0,
+     "reb": 0,
+     "as": 0,
+     "rec": 0,
+     "per": 1,
+     "val": -2,
+     "efg": 0,
+     "ts": 0
+    },
+    {
+     "num": "#10",
+     "nombre": "Corozo Lascano F.",
+     "pts": 0,
+     "dosp": "0/2",
+     "tresp": "0/4",
+     "tl": "0/0",
+     "ro": 0,
+     "rd": 0,
+     "reb": 0,
+     "as": 2,
+     "rec": 1,
+     "per": 0,
+     "val": -5,
+     "efg": 0,
+     "ts": 0
+    }
+   ],
+   "equipo": {
+    "pts": 31,
+    "dosp": "9/19",
+    "tresp": "2/10",
+    "tl": "7/9",
+    "ro": 4,
+    "rd": 13,
+    "reb": 17,
+    "as": 4,
+    "rec": 4,
+    "per": 6,
+    "val": "",
+    "efg": 41,
+    "ts": 47
+   }
+  }
+ },
+ "avanzadas": {
+  "nosotras": {
+   "ortg": 95,
+   "drtg": 89,
+   "efg": 44,
+   "ts": 45,
+   "tov": 21,
+   "orb": 41,
+   "ftr": 12,
+   "pint": 16,
+   "contra": 2,
+   "segop": 6
+  },
+  "rival": {
+   "ortg": 89,
+   "drtg": 95,
+   "efg": 41,
+   "ts": 47,
+   "tov": 17,
+   "orb": 21,
+   "ftr": 31,
+   "pint": 18,
+   "contra": 10,
+   "segop": 6
+  }
+ }
+}

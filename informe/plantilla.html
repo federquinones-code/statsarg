@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Informe de entretiempo</title>
+<style>
+@font-face{font-family:'Lato';src:url('fonts/lato-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'Lato';src:url('fonts/lato-latin-700-normal.woff2') format('woff2');font-weight:700;font-style:normal;font-display:block}
+@font-face{font-family:'Lato';src:url('fonts/lato-latin-900-normal.woff2') format('woff2');font-weight:900;font-style:normal;font-display:block}
+
+:root{
+  --navy:#1b3a5c;
+  --navy-osc:#12283f;
+  --navy-claro:#a9bdd4;
+  --naranja:#c0562a;
+  --naranja-claro:#e6bda6;
+  --verde:#2e7d5b;
+  --verde-fondo:#e3efe8;
+  --rojo:#b3384f;
+  --rojo-fondo:#fae7ec;
+  --tinta:#14293f;
+  --gris:#6f7780;
+  --gris-claro:#9aa1a9;
+  --linea:#d8dade;
+  --linea-suave:#eceef0;
+  --zebra:#f6f5f3;
+  --negro:#101820;
+  --papel:#ffffff;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Lato','Liberation Sans',Arial,sans-serif;
+  color:var(--tinta);
+  background:var(--papel);
+  -webkit-font-smoothing:antialiased;
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---------- página ---------- */
+.pagina{
+  position:relative;
+  width:210mm;
+  height:297mm;
+  padding:14mm 13mm 12mm;
+  background:var(--papel);
+  overflow:hidden;
+  page-break-after:always;
+  display:flex;
+  flex-direction:column;
+}
+.pagina:last-child{page-break-after:auto}
+
+.marca{
+  position:absolute;
+  top:46%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(-32deg);
+  font-size:118pt;
+  font-weight:900;
+  letter-spacing:.04em;
+  color:#f3f3f2;
+  white-space:nowrap;
+  z-index:0;
+  pointer-events:none;
+}
+.capa{position:relative;z-index:1;display:flex;flex-direction:column;flex:1}
+
+/* ---------- cabecera ---------- */
+.cabecera{display:flex;align-items:flex-start;justify-content:space-between;gap:10mm}
+.cabecera h1{
+  margin:0;
+  font-size:20pt;
+  font-weight:900;
+  letter-spacing:0;
+  color:var(--tinta);
+  text-transform:uppercase;
+}
+.cabecera .bajada{
+  margin:2.2mm 0 0;
+  font-size:10pt;
+  color:var(--gris);
+  font-weight:400;
+}
+.chapa{
+  flex:none;
+  background:var(--negro);
+  color:#fff;
+  border-radius:3mm;
+  padding:2.6mm 5mm;
+  text-align:center;
+  margin-top:.5mm;
+}
+.chapa .liga{font-size:7.4pt;font-weight:700;letter-spacing:.02em}
+.chapa .fed{font-size:6pt;color:#b9bfc6;margin-top:.6mm;letter-spacing:.06em}
+.regla{height:1mm;background:var(--navy);margin:3.5mm 0 0;border-radius:.5mm}
+
+/* ---------- títulos de sección ---------- */
+.seccion{margin-top:8mm}
+.seccion > h2{
+  margin:0;
+  font-size:12.5pt;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.005em;
+  color:var(--tinta);
+}
+.seccion > .nota{
+  margin:1.6mm 0 0;
+  font-size:8pt;
+  color:var(--gris);
+}
+
+/* ---------- marcador ---------- */
+.marcador{
+  margin-top:7mm;
+  border:.35mm solid var(--linea);
+  border-radius:2mm;
+  padding:5mm 6mm 4mm;
+  display:grid;
+  grid-template-columns:22mm 1fr 30mm 1fr 22mm;
+  align-items:center;
+  column-gap:3mm;
+}
+.escudo{width:20mm;height:20mm;object-fit:contain;display:block;margin:0 auto}
+.escudo-ph{
+  width:17mm;height:17mm;border-radius:50%;margin:0 auto;
+  background:var(--linea-suave);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9pt;font-weight:900;color:var(--gris-claro);letter-spacing:.02em;
+}
+.lado{text-align:center}
+.lado .nombre{font-size:11pt;font-weight:900;letter-spacing:.01em}
+.lado.nos .nombre{color:var(--navy)}
+.lado.riv .nombre{color:var(--naranja)}
+.lado .tanteo{
+  font-size:38pt;font-weight:900;line-height:.95;margin-top:1mm;color:var(--navy-osc);
+}
+.centro{text-align:center}
+.centro .etiqueta{font-size:7.6pt;color:var(--gris);letter-spacing:.03em}
+.centro .guion{font-size:20pt;color:var(--linea);line-height:1;margin:.5mm 0 1mm}
+.centro .dif{font-size:10pt;font-weight:900;letter-spacing:.02em}
+.dif.arriba{color:var(--verde)}
+.dif.abajo{color:var(--rojo)}
+.dif.igual{color:var(--gris)}
+.parciales{
+  grid-column:1/-1;
+  text-align:center;
+  margin-top:3mm;
+  font-size:8.4pt;
+  color:var(--gris);
+  letter-spacing:.01em;
+}
+.parciales span{margin:0 2.5mm}
+
+/* ---------- cuatro factores ---------- */
+.factores{margin-top:5mm;display:flex;flex-direction:column;gap:3.4mm}
+.factor{display:grid;grid-template-columns:1fr 52mm 1fr;align-items:center;column-gap:3mm}
+.pista{display:flex;align-items:center;gap:2.5mm}
+.pista.izq{justify-content:flex-end}
+.pista.der{justify-content:flex-start}
+.barra{height:6.2mm;border-radius:.6mm}
+.val{font-size:9.5pt;font-weight:900;min-width:7mm}
+.pista.izq .val{text-align:right}
+.val.gana-nos{color:var(--navy)}
+.val.gana-riv{color:var(--naranja)}
+.val.pierde{color:var(--gris-claro);font-weight:700}
+.factor .clave{text-align:center;font-size:9pt;color:var(--tinta)}
+.factor .clave b{font-weight:700}
+.factor .clave span{color:var(--gris)}
+
+/* ---------- rebote + transición ---------- */
+.dos-columnas{margin-top:8mm;display:grid;grid-template-columns:1fr 1.25fr;gap:9mm;align-items:start}
+.tabla-rebote{width:100%;border-collapse:collapse;margin-top:5mm;font-size:9pt}
+.tabla-rebote th{
+  background:var(--navy-osc);color:#fff;font-size:7.6pt;font-weight:700;
+  letter-spacing:.05em;padding:2.2mm 2mm;text-align:center;
+}
+.tabla-rebote th:first-child{text-align:left;background:var(--navy-osc)}
+.tabla-rebote td{padding:2.4mm 2mm;text-align:center;border-bottom:.2mm solid var(--linea-suave)}
+.tabla-rebote td:first-child{text-align:left;color:var(--tinta)}
+.tabla-rebote .c-nos{background:var(--verde-fondo)}
+.tabla-rebote .c-riv{background:var(--rojo-fondo)}
+.tabla-rebote tr.total td{font-weight:900;border-bottom:none}
+.tabla-rebote tr.total td:first-child{background:var(--zebra)}
+
+.transicion{
+  margin-top:5mm;
+  border:.35mm solid var(--linea);
+  border-radius:2mm;
+  padding:4mm 5mm;
+  display:grid;
+  grid-template-columns:1fr .3mm 1fr;
+  column-gap:5mm;
+}
+.divisor{background:var(--linea-suave)}
+.tr-lado .rotulo{font-size:6.8pt;color:var(--gris);letter-spacing:.07em;text-transform:uppercase}
+.tr-cuerpo{display:flex;align-items:center;gap:3.5mm;margin-top:2mm}
+.tr-num{font-size:26pt;font-weight:900;line-height:1}
+.tr-num.bueno{color:var(--verde)}
+.tr-num.malo{color:var(--rojo)}
+.tr-detalle{font-size:8pt;color:var(--gris);line-height:1.5}
+.tr-detalle .fuerte{color:var(--rojo);font-weight:700}
+.tr-pie{font-size:6.8pt;color:var(--gris-claro);letter-spacing:.07em;text-transform:uppercase;margin-top:2.5mm}
+
+/* ---------- resumen ---------- */
+.resumen{margin-top:auto;padding-top:8mm}
+.resumen p{margin:4mm 0 0;font-size:8.8pt;line-height:1.7;color:var(--tinta);max-width:178mm}
+
+/* ---------- mapa de tiro ---------- */
+.canchas{margin-top:6mm;display:grid;grid-template-columns:1fr 1fr;gap:8mm}
+.cancha-caja{text-align:center}
+.cancha-caja h3{margin:0;font-size:10pt;font-weight:900;letter-spacing:.02em;text-transform:uppercase}
+.cancha-caja.nos h3{color:var(--navy)}
+.cancha-caja.riv h3{color:var(--naranja)}
+.cancha-caja .sub{margin:1.4mm 0 3mm;font-size:7.6pt;color:var(--gris)}
+.cancha-caja svg{width:100%;height:auto;display:block}
+.cancha-caja img{width:100%;height:auto;display:block;border:.2mm solid var(--linea)}
+.linea-cancha{fill:none;stroke:#2b2b2b;stroke-width:1.1}
+.tiro-metido{fill:#3f9d6d;stroke:none}
+.tiro-errado{stroke:#c0687d;stroke-width:1.6;fill:none;stroke-linecap:round}
+
+/* ---------- fichas de scouting ---------- */
+.fichas{margin-top:5mm}
+.ficha{
+  display:grid;
+  grid-template-columns:11mm 54mm 12mm 1fr;
+  align-items:center;
+  column-gap:3mm;
+  padding:3.2mm 0;
+  border-bottom:.2mm solid var(--linea-suave);
+}
+.ficha:last-child{border-bottom:none}
+.dorsal{
+  background:var(--naranja);color:#fff;border-radius:1mm;
+  font-size:8pt;font-weight:900;text-align:center;padding:1mm .5mm;
+}
+.ficha .nombre{font-size:9pt;font-weight:900;line-height:1.25}
+.ficha .tiro{font-size:7.2pt;color:var(--gris);margin-top:.8mm;letter-spacing:.01em}
+.ficha .puntos{text-align:center}
+.ficha .puntos b{display:block;font-size:17pt;font-weight:900;color:var(--naranja);line-height:1}
+.ficha .puntos span{font-size:6.2pt;color:var(--gris-claro);letter-spacing:.09em}
+.ficha .consejo{font-size:8pt;line-height:1.45}
+.ficha .torneo{font-size:7pt;color:var(--gris);margin-top:1mm}
+
+/* ---------- fortalezas / debilidades ---------- */
+.tres-columnas{margin-top:5mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:5mm}
+.bloque h4{
+  margin:0;padding:2mm 3mm;color:#fff;font-size:8pt;font-weight:900;
+  letter-spacing:.05em;text-transform:uppercase;border-radius:.8mm;
+}
+.bloque.f h4{background:var(--verde)}
+.bloque.d h4{background:var(--rojo)}
+.bloque.m h4{background:var(--navy)}
+.bloque ul{margin:3mm 0 0;padding:0 0 0 4mm;list-style:none}
+.bloque li{position:relative;font-size:8.6pt;line-height:1.5;margin-bottom:2mm;color:var(--tinta)}
+.bloque li::before{content:"•";position:absolute;left:-3.4mm;color:var(--gris-claro)}
+
+/* ---------- box score ---------- */
+.rotulo-equipo{margin:7mm 0 0;font-size:11.5pt;font-weight:900;text-transform:uppercase;letter-spacing:.01em}
+.rotulo-equipo.nos{color:var(--tinta)}
+.rotulo-equipo.riv{color:var(--tinta)}
+.box{width:100%;border-collapse:collapse;margin-top:3.5mm;font-size:7.6pt}
+.box thead th{
+  color:#fff;font-weight:700;font-size:6.8pt;letter-spacing:.05em;
+  padding:2mm 1mm;text-align:center;
+}
+.box.nos thead th{background:var(--navy)}
+.box.riv thead th{background:var(--naranja)}
+.box thead th.izq{text-align:left;padding-left:2.5mm}
+.box tbody td{padding:1.9mm 1mm;text-align:center;border-bottom:.2mm solid var(--linea-suave);color:var(--tinta)}
+.box tbody td.num{color:var(--gris);text-align:center;width:9mm}
+.box tbody td.jug{text-align:left;padding-left:2.5mm}
+.box tbody tr:nth-child(even) td{background:var(--zebra)}
+.box tbody tr.equipo td{font-weight:900;background:#efeeeb;border-bottom:none}
+.box tbody tr.equipo td.jug{padding-left:2.5mm}
+
+/* ---------- avanzadas ---------- */
+.avanzadas{width:100%;border-collapse:collapse;margin-top:3.5mm;font-size:8pt}
+.avanzadas thead th{
+  background:var(--negro);color:#fff;font-weight:700;font-size:6.8pt;
+  letter-spacing:.05em;padding:2.2mm 1mm;text-align:center;
+}
+.avanzadas thead th.izq{text-align:left;padding-left:3mm}
+.avanzadas tbody td{padding:3.2mm 1mm;text-align:center;border-bottom:.2mm solid var(--linea-suave)}
+.avanzadas tbody td.izq{text-align:left;padding-left:3mm;font-weight:700}
+.avanzadas tbody tr:last-child td{background:var(--zebra);border-bottom:none}
+.glosario{margin:3mm 0 0;font-size:6.8pt;color:var(--gris);line-height:1.55}
+
+/* ---------- pie ---------- */
+.pie{margin-top:auto;padding-top:5mm;border-top:.2mm solid var(--linea-suave);display:flex;justify-content:flex-end}
+.pie span{font-size:7.4pt;color:var(--gris-claro)}
+.sin-dato{color:var(--gris-claro);font-style:italic}
+</style>
+</head>
+<body>
+
+<!-- ===================== PÁGINA 1 ===================== -->
+<section class="pagina">
+  <div class="marca">STATSARG</div>
+  <div class="capa">
+    <header class="cabecera">
+      <div>
+        <h1>Informe de entretiempo</h1>
+        <p class="bajada" id="bajada-1"></p>
+      </div>
+      <div class="chapa"><div class="liga" id="liga-1"></div><div class="fed" id="fed-1"></div></div>
+    </header>
+    <div class="regla"></div>
+
+    <div class="marcador" id="marcador"></div>
+
+    <div class="seccion">
+      <h2>Los cuatro factores &middot; 1er tiempo</h2>
+      <p class="nota" id="nota-factores"></p>
+      <div class="factores" id="factores"></div>
+    </div>
+
+    <div class="dos-columnas">
+      <div>
+        <h2 style="margin:0;font-size:12.5pt;font-weight:900;text-transform:uppercase">Rebote</h2>
+        <table class="tabla-rebote" id="tabla-rebote"></table>
+      </div>
+      <div>
+        <h2 style="margin:0;font-size:12.5pt;font-weight:900;text-transform:uppercase">Transici&oacute;n &middot; corrimos y nos corrieron</h2>
+        <div class="transicion" id="transicion"></div>
+      </div>
+    </div>
+
+    <div class="resumen">
+      <h2 style="margin:0;font-size:12.5pt;font-weight:900;text-transform:uppercase">El partido en una l&iacute;nea</h2>
+      <p id="resumen"></p>
+    </div>
+
+    <div class="pie"><span>1</span></div>
+  </div>
+</section>
+
+<!-- ===================== PÁGINA 2 ===================== -->
+<section class="pagina">
+  <div class="marca">STATSARG</div>
+  <div class="capa">
+    <header class="cabecera">
+      <div>
+        <h1>D&oacute;nde y a qui&eacute;n</h1>
+        <p class="bajada">De d&oacute;nde nos anotan &middot; a qui&eacute;n frenar &middot; qu&eacute; cambiamos</p>
+      </div>
+      <div class="chapa"><div class="liga" id="liga-2"></div><div class="fed" id="fed-2"></div></div>
+    </header>
+    <div class="regla"></div>
+
+    <div class="seccion">
+      <h2>Mapa de tiro del 1er tiempo &middot; en qu&eacute; parte</h2>
+      <p class="nota" id="nota-mapa"></p>
+      <div class="canchas" id="canchas"></div>
+    </div>
+
+    <div class="seccion">
+      <h2>Qui&eacute;n nos hace da&ntilde;o &middot; y qu&eacute; hacerle</h2>
+      <div class="fichas" id="fichas"></div>
+    </div>
+
+    <div class="seccion">
+      <h2>Fortalezas &middot; debilidades &middot; a mejorar</h2>
+      <div class="tres-columnas" id="bloques"></div>
+    </div>
+
+    <div class="pie"><span>2</span></div>
+  </div>
+</section>
+
+<!-- ===================== PÁGINA 3 ===================== -->
+<section class="pagina">
+  <div class="marca">STATSARG</div>
+  <div class="capa">
+    <header class="cabecera">
+      <div>
+        <h1>Box del 1er tiempo</h1>
+        <p class="bajada">Tradicional + eFG/TS por jugadora &middot; avanzadas de equipo</p>
+      </div>
+      <div class="chapa"><div class="liga" id="liga-3"></div><div class="fed" id="fed-3"></div></div>
+    </header>
+    <div class="regla"></div>
+
+    <h3 class="rotulo-equipo nos" id="rot-nos"></h3>
+    <table class="box nos" id="box-nos"></table>
+
+    <h3 class="rotulo-equipo riv" id="rot-riv"></h3>
+    <table class="box riv" id="box-riv"></table>
+
+    <div class="seccion">
+      <h2>Avanzadas de equipo &middot; 1er tiempo</h2>
+      <table class="avanzadas" id="avanzadas"></table>
+      <p class="glosario">ORtg/DRtg = pts por 100 posesiones (ataque / defensa).&nbsp; eFG% efectividad de tiro &middot; TS% acierto real (incluye libres) &middot; TOV% pelotas perdidas &middot; ORB% rebote ofensivo &middot;<br>FTr llegada a la l&iacute;nea.&nbsp; PINT pts en pintura &middot; CONTRA pts de contraataque &middot; 2&ordf; OP segunda opci&oacute;n.</p>
+    </div>
+
+    <div class="pie"><span>3</span></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var D = window.DATOS;
+  if(!D){ document.body.innerHTML = '<p style="padding:20mm;font-family:sans-serif">Falta window.DATOS</p>'; return; }
+
+  var esc = function(s){
+    return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  };
+  var sd = function(v){ // "sin dato" cuando el valor no llegó
+    return (v===null||v===undefined||v==='') ? '<span class="sin-dato">s/d</span>' : esc(v);
+  };
+  var $ = function(id){ return document.getElementById(id); };
+  // el molde separa los grupos con espacios dobles; el HTML los colapsa
+  var esp = function(s){ return esc(s).replace(/ {2,}/g, function(m){
+    return Array(m.length+1).join('&nbsp;'); }); };
+
+  var M = D.meta, NOS = M.nosotras, RIV = M.rival;
+
+  /* ---- cabeceras ---- */
+  ['1','2','3'].forEach(function(n){
+    $('liga-'+n).textContent = M.liga;
+    $('fed-'+n).textContent  = M.federacion;
+  });
+  $('bajada-1').innerHTML = esp(NOS + '  vs  ' + RIV + '   ·   Cómo llegamos al descanso');
+  $('nota-factores').innerHTML = esp('Izquierda ' + NOS + ' · derecha ' + RIV + '.  Barra llena = quién ganó ese factor.');
+
+  /* ---- marcador ---- */
+  var mc = D.marcador;
+  var dif = mc.nosotras - mc.rival;
+  var clase = dif > 0 ? 'arriba' : (dif < 0 ? 'abajo' : 'igual');
+  var textoDif = dif > 0 ? (dif + ' ARRIBA') : (dif < 0 ? (Math.abs(dif) + ' ABAJO') : 'IGUALADAS');
+  var escudo = function(url, sigla){
+    return url ? '<img class="escudo" src="' + esc(url) + '" alt="">'
+               : '<div class="escudo-ph">' + esc(sigla) + '</div>';
+  };
+  var sigla = function(nombre){
+    return nombre.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ ]/g,'').split(/\s+/)
+                 .map(function(p){return p.charAt(0);}).join('').slice(0,3).toUpperCase();
+  };
+  $('marcador').innerHTML =
+    escudo(M.escudoNosotras, sigla(NOS)) +
+    '<div class="lado nos"><div class="nombre">' + esc(NOS.toUpperCase()) + '</div>' +
+      '<div class="tanteo">' + esc(mc.nosotras) + '</div></div>' +
+    '<div class="centro"><div class="etiqueta">' + esc(mc.etiqueta || 'AL DESCANSO') + '</div>' +
+      '<div class="guion">&ndash;</div>' +
+      '<div class="dif ' + clase + '">' + esc(textoDif) + '</div></div>' +
+    '<div class="lado riv"><div class="nombre">' + esc(RIV.toUpperCase()) + '</div>' +
+      '<div class="tanteo">' + esc(mc.rival) + '</div></div>' +
+    escudo(M.escudoRival, sigla(RIV)) +
+    '<div class="parciales">' + (mc.parciales||[]).map(function(p){
+        return '<span>' + p.n + 'C ' + p.nosotras + '-' + p.rival + '</span>';
+      }).join('<span>·</span>') + '</div>';
+
+  /* ---- cuatro factores ---- */
+  var PISTA = 46; // mm de pista útil
+  $('factores').innerHTML = (D.cuatroFactores||[]).map(function(f){
+    var altoMejor = f.mejor !== 'bajo';
+    var ganaNos = altoMejor ? (f.nosotras > f.rival) : (f.nosotras < f.rival);
+    var empate  = f.nosotras === f.rival;
+    var tope = Math.max(f.nosotras, f.rival) || 1;
+    var lnos = Math.max(4, (f.nosotras / tope) * PISTA);
+    var lriv = Math.max(4, (f.rival    / tope) * PISTA);
+    var colNos = (ganaNos && !empate) ? 'var(--navy)'    : 'var(--navy-claro)';
+    var colRiv = (!ganaNos && !empate) ? 'var(--naranja)' : 'var(--naranja-claro)';
+    var clsNos = empate ? 'pierde' : (ganaNos ? 'gana-nos' : 'pierde');
+    var clsRiv = empate ? 'pierde' : (ganaNos ? 'pierde' : 'gana-riv');
+    return '<div class="factor">' +
+      '<div class="pista izq"><span class="val ' + clsNos + '">' + esc(f.nosotras) + '</span>' +
+        '<span class="barra" style="width:' + lnos.toFixed(1) + 'mm;background:' + colNos + '"></span></div>' +
+      '<div class="clave"><b>' + esc(f.clave) + '</b> <span>· ' + esc(f.desc) + '</span></div>' +
+      '<div class="pista der"><span class="barra" style="width:' + lriv.toFixed(1) + 'mm;background:' + colRiv + '"></span>' +
+        '<span class="val ' + clsRiv + '">' + esc(f.rival) + '</span></div>' +
+    '</div>';
+  }).join('');
+
+  /* ---- rebote ---- */
+  var rb = D.rebote || {};
+  var fila = function(rotulo, par, total){
+    var c = total ? ' class="total"' : '';
+    return '<tr' + c + '><td>' + rotulo + '</td>' +
+           '<td class="c-nos">' + sd(par[0]) + '</td>' +
+           '<td class="c-riv">' + sd(par[1]) + '</td></tr>';
+  };
+  var of = rb.ofensivo || [null,null], de = rb.defensivo || [null,null];
+  var tot = [ (of[0]!=null&&de[0]!=null)?of[0]+de[0]:null, (of[1]!=null&&de[1]!=null)?of[1]+de[1]:null ];
+  $('tabla-rebote').innerHTML =
+    '<thead><tr><th></th><th>NOSOTRAS</th><th>RIVAL</th></tr></thead><tbody>' +
+    fila('Ofensivo', of) + fila('Defensivo', de) + fila('<b>TOTAL</b>', tot, true) +
+    '</tbody>';
+
+  /* ---- transición ---- */
+  var tr = D.transicion || {};
+  var ladoTr = function(rotulo, dato, bueno){
+    var det = (dato && dato.detalle || []).map(function(d){
+      var texto = (typeof d === 'string') ? d : d.texto;
+      var fuerte = (typeof d === 'object') && d.fuerte;
+      return '<div' + (fuerte ? ' class="fuerte"' : '') + '>' + esc(texto) + '</div>';
+    }).join('');
+    return '<div class="tr-lado"><div class="rotulo">' + rotulo + '</div>' +
+      '<div class="tr-cuerpo"><div class="tr-num ' + (bueno?'bueno':'malo') + '">' +
+        sd(dato && dato.contra) + '</div><div class="tr-detalle">' + det + '</div></div>' +
+      '<div class="tr-pie">Pts de contra</div></div>';
+  };
+  $('transicion').innerHTML =
+    ladoTr('Nosotras corrimos', tr.nosotras, true) +
+    '<div class="divisor"></div>' +
+    ladoTr('Nos corrieron', tr.rival, false);
+
+  $('resumen').innerHTML = (D.resumen||'').split('\n').map(esc).join('<br>');
+
+  /* ---- mapa de tiro ---- */
+  function cancha(tiros){
+    // viewBox 0 0 150 140 · 1 unidad = 10 cm · aro abajo al centro
+    var marcas = (tiros||[]).map(function(t){
+      var x = t.x * 150, y = 140 - t.y * 140;
+      if(t.metido){
+        return '<circle class="tiro-metido" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="2.2"/>';
+      }
+      var r = 2.1;
+      return '<path class="tiro-errado" d="M' + (x-r).toFixed(1) + ' ' + (y-r).toFixed(1) +
+             ' L' + (x+r).toFixed(1) + ' ' + (y+r).toFixed(1) +
+             ' M' + (x+r).toFixed(1) + ' ' + (y-r).toFixed(1) +
+             ' L' + (x-r).toFixed(1) + ' ' + (y+r).toFixed(1) + '"/>';
+    }).join('');
+    return '<svg viewBox="-2 -2 154 144" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect class="linea-cancha" x="0" y="0" width="150" height="140"/>' +
+      '<rect class="linea-cancha" x="50.5" y="91" width="49" height="49"/>' +
+      '<circle class="linea-cancha" cx="75" cy="82" r="18"/>' +
+      '<path class="linea-cancha" d="M9 140 L9 110.1 A67.5 67.5 0 0 1 141 110.1 L141 140"/>' +
+      '<path class="linea-cancha" d="M66 128 L84 128"/>' +
+      '<circle class="linea-cancha" cx="75" cy="124.3" r="2.6"/>' +
+      marcas +
+    '</svg>';
+  }
+  var mt = D.mapaTiro || {};
+  $('nota-mapa').innerHTML = esp('Nuestro tiro (izq.) y el de ' + RIV + ' (der.).  ' + (mt.nota || ''));
+  var cajaCancha = function(cls, titulo, lado){
+    var cuerpo = lado && lado.imagen
+      ? '<img src="' + esc(lado.imagen) + '" alt="">'
+      : cancha(lado && lado.tiros);
+    return '<div class="cancha-caja ' + cls + '"><h3>' + esc(titulo) + '</h3>' +
+      '<p class="sub">' + esp((lado && lado.linea) || '') + '&nbsp; · &nbsp;&#9679; metido &nbsp;&#10005; errado</p>' +
+      cuerpo + '</div>';
+  };
+  $('canchas').innerHTML =
+    cajaCancha('nos', 'Nuestro tiro — ' + NOS, mt.nosotras) +
+    cajaCancha('riv', 'Tiro de ' + RIV, mt.rival);
+
+  /* ---- fichas de scouting ---- */
+  $('fichas').innerHTML = (D.scouting||[]).map(function(j){
+    return '<div class="ficha">' +
+      '<div class="dorsal">' + esc(j.num) + '</div>' +
+      '<div><div class="nombre">' + esc(j.nombre) + '</div>' +
+        '<div class="tiro">' + esp(j.linea || '') + '</div></div>' +
+      '<div class="puntos"><b>' + esc(j.pts) + '</b><span>PTS</span></div>' +
+      '<div><div class="consejo">' + esc(j.consejo || '') + '</div>' +
+        '<div class="torneo">' + esc(j.torneo || '') + '</div></div>' +
+    '</div>';
+  }).join('');
+
+  /* ---- fortalezas / debilidades / a mejorar ---- */
+  var bloque = function(cls, titulo, items){
+    return '<div class="bloque ' + cls + '"><h4>' + titulo + '</h4><ul>' +
+      (items||[]).map(function(i){ return '<li>' + esc(i) + '</li>'; }).join('') + '</ul></div>';
+  };
+  $('bloques').innerHTML =
+    bloque('f', 'Fortalezas', D.fortalezas) +
+    bloque('d', 'Debilidades', D.debilidades) +
+    bloque('m', 'A mejorar (2&ordm;T)', D.aMejorar);
+
+  /* ---- box score ---- */
+  var COLS = ['PTS','2P','3P','TL','RO','RD','REB','AS','REC','PÉR','VAL','eFG','TS'];
+  var CAMPOS = ['pts','dosp','tresp','tl','ro','rd','reb','as','rec','per','val','efg','ts'];
+  function tablaBox(equipo, cls){
+    var cab = '<thead><tr><th class="izq">#</th><th class="izq">JUGADORA</th>' +
+      COLS.map(function(c){ return '<th>' + c + '</th>'; }).join('') + '</tr></thead>';
+    var filas = (equipo.jugadoras||[]).map(function(j){
+      return '<tr><td class="num">' + esc(j.num) + '</td><td class="jug">' + esc(j.nombre) + '</td>' +
+        CAMPOS.map(function(c){ return '<td>' + sd(j[c]) + '</td>'; }).join('') + '</tr>';
+    }).join('');
+    var eq = equipo.equipo || {};
+    var total = '<tr class="equipo"><td class="num"></td><td class="jug">EQUIPO</td>' +
+      CAMPOS.map(function(c){ return '<td>' + (eq[c]==null?'':esc(eq[c])) + '</td>'; }).join('') + '</tr>';
+    return cab + '<tbody>' + filas + total + '</tbody>';
+  }
+  var bx = D.box || {};
+  $('rot-nos').innerHTML = esc(NOS.toUpperCase()) + '  &middot;  NOSOTRAS';
+  $('rot-riv').innerHTML = esc(RIV.toUpperCase()) + '  &middot;  RIVAL';
+  $('box-nos').innerHTML = tablaBox(bx.nosotras || {}, 'nos');
+  $('box-riv').innerHTML = tablaBox(bx.rival || {}, 'riv');
+
+  /* ---- avanzadas ---- */
+  var AV = [['ortg','ORtg'],['drtg','DRtg'],['efg','eFG%'],['ts','TS%'],['tov','TOV%'],
+            ['orb','ORB%'],['ftr','FTr'],['pint','PINT'],['contra','CONTRA'],['segop','2ª OP']];
+  var av = D.avanzadas || {};
+  var filaAv = function(nombre, d){
+    return '<tr><td class="izq">' + esc(nombre) + '</td>' +
+      AV.map(function(c){ return '<td>' + sd(d && d[c[0]]) + '</td>'; }).join('') + '</tr>';
+  };
+  $('avanzadas').innerHTML =
+    '<thead><tr><th class="izq"></th>' + AV.map(function(c){ return '<th>' + c[1] + '</th>'; }).join('') + '</tr></thead>' +
+    '<tbody>' + filaAv(NOS, av.nosotras) + filaAv(RIV, av.rival) + '</tbody>';
+})();
+</script>
+</body>
+</html>
