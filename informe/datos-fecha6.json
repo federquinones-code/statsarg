@@ -1,0 +1,107 @@
+{
+ "meta": {
+  "liga": "LIGA NACIONAL FEB FEMENINA 2026",
+  "federacion": "FECUB · ECUADOR",
+  "nosotras": "ICCAN",
+  "rival": "Andes",
+  "escudoNosotras": "escudos/iccan.png",
+  "escudoRival": "escudos/andes.png"
+ },
+ "marcador": {
+  "nosotras": null,
+  "rival": null,
+  "etiqueta": "AL DESCANSO",
+  "parciales": [
+   {
+    "n": 1,
+    "nosotras": 18,
+    "rival": 14
+   },
+   {
+    "n": 2,
+    "nosotras": null,
+    "rival": null
+   }
+  ]
+ },
+ "cuatroFactores": [
+  {
+   "clave": "eFG%",
+   "desc": "efectividad de tiro",
+   "nosotras": null,
+   "rival": null,
+   "mejor": "alto"
+  },
+  {
+   "clave": "TOV%",
+   "desc": "cuánto la perdió",
+   "nosotras": null,
+   "rival": null,
+   "mejor": "bajo"
+  },
+  {
+   "clave": "ORB%",
+   "desc": "rebote ofensivo",
+   "nosotras": null,
+   "rival": null,
+   "mejor": "alto"
+  },
+  {
+   "clave": "FTr",
+   "desc": "llegada a la línea",
+   "nosotras": null,
+   "rival": null,
+   "mejor": "alto"
+  }
+ ],
+ "rebote": {
+  "ofensivo": [
+   null,
+   null
+  ],
+  "defensivo": [
+   null,
+   null
+  ]
+ },
+ "transicion": {
+  "nosotras": {
+   "contra": null,
+   "detalle": []
+  },
+  "rival": {
+   "contra": null,
+   "detalle": []
+  }
+ },
+ "resumen": "",
+ "mapaTiro": {
+  "nota": "",
+  "nosotras": {
+   "linea": "",
+   "tiros": []
+  },
+  "rival": {
+   "linea": "",
+   "tiros": []
+  }
+ },
+ "scouting": [],
+ "fortalezas": [],
+ "debilidades": [],
+ "aMejorar": [],
+ "box": {
+  "nosotras": {
+   "jugadoras": [],
+   "equipo": {}
+  },
+  "rival": {
+   "jugadoras": [],
+   "equipo": {}
+  }
+ },
+ "avanzadas": {
+  "nosotras": {},
+  "rival": {}
+ }
+}
