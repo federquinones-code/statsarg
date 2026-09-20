@@ -5,7 +5,7 @@
   "nosotras": "ICCAN",
   "rival": "Andes",
   "escudoNosotras": "escudos/iccan.png",
-  "escudoRival": null
+  "escudoRival": "escudos/andes.png"
  },
  "marcador": {
   "nosotras": null,
@@ -14,8 +14,8 @@
   "parciales": [
    {
     "n": 1,
-    "nosotras": null,
-    "rival": null
+    "nosotras": 18,
+    "rival": 14
    },
    {
     "n": 2,
